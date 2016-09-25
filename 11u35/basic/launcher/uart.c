@@ -12,7 +12,7 @@ const uint32_t OscRateIn = 12000000;
  * Private types/enumerations/variables
  ****************************************************************************/
 
-const char inst1[] = "LPC11xx UART example buffers\r\n";
+const char inst1[] = "LPC11xx Boot!\r\n";
 
 /*****************************************************************************
  * Public types/enumerations/variables
@@ -55,11 +55,6 @@ int main(void)
 		if ( ret ) p++;
 	}
 
-	while(1) {
-		char c;
-		if ( Chip_UART_Read(LPC_USART, &c, 1) ) {
-			Chip_UART_Send(LPC_USART, &c,1);
-			}
-		} 
+	LaunchUserAppNoNVIC( (long unsigned int *) 0x2000);
 	
 	}
