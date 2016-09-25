@@ -1,0 +1,19 @@
+# Generate a combined firmware.bin 
+# by producing a checksummed NXP binary, padding it out,
+# and appending the forth image.
+
+# srec_cat command file to generate a binary
+# with a NXP Cortex vector checksum at 0x1C
+# Usage: srec_cat @filename
+# input file
+launcher/exe/launcher.hex -Intel
+-crop 0x0 0x1C               # just keep code area for CRC calculation below
+-Checksum_Negative_Little_Endian 0x001C 4 4 
+
+# insert the remainder of the file.
+launcher/exe/launcher.hex -Intel -crop 0x20             
+
+forth/11UXX.img -binary -offset 0x2000
+
+-Output firmware.bin -binary 
+

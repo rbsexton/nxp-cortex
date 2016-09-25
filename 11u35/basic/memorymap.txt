@@ -1,0 +1,3 @@
+This part has 64k of Flash and 8k of Ram.
+
+Inital Partitioning - launcher/supervisor: 8k/4k
