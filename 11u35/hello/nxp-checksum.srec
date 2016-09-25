@@ -1,0 +1,13 @@
+# srec_cat command file to generate a binary
+# with a NXP Cortex vector checksum at 0x1C
+# Usage: srec_cat @filename
+# input file
+exe/launcher.hex -Intel
+-crop 0x0 0x1C               # just keep code area for CRC calculation below
+-Checksum_Negative_Little_Endian 0x001C 4 4 
+
+# insert the remainder of the file.
+exe/launcher.hex -Intel -crop 0x20             
+
+-Output firmware.bin -binary 
+
