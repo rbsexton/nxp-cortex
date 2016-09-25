@@ -49,7 +49,7 @@ extern "C" {
 
 // Code Red - if CMSIS is being used, then SystemInit() routine
 // will be called by startup code rather than in application's main()
-extern void SystemInit(void);
+extern void Chip_SystemInit(void);
 
 //*****************************************************************************
 #if defined (__cplusplus)
@@ -665,8 +665,8 @@ ResetISR(void) {
 	bss_init ((unsigned int)ExeAddr, SectionLen);
 #endif
 
-	extern void SystemInit(void);
-	SystemInit();
+	extern void Chip_SystemInit(void);
+	Chip_SystemInit();
 
 #if defined (__cplusplus)
 	//
