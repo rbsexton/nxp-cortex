@@ -55,6 +55,11 @@ int main(void)
 		if ( ret ) p++;
 	}
 
-	while(1) { ; } 
+	while(1) {
+		char c;
+		if ( Chip_UART_Read(LPC_USART, &c, 1) ) {
+			Chip_UART_Send(LPC_USART, &c,1);
+			}
+		} 
+	
 	}
-
