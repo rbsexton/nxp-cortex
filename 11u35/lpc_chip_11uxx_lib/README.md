@@ -1,3 +1,3 @@
 This folder is a place-holder for 
-LPCWare files from NXP.  
+LPCOpen v2.03 from NXP
 
