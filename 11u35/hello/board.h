@@ -33,7 +33,6 @@
 #define __BOARD_H_
 
 #include "chip.h"
-#include "uda1380.h"
 /* board_api.h is included at the bottom of this file after DEBUG setup */
 
 #ifdef __cplusplus
