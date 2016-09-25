@@ -14,8 +14,8 @@ uniq = $(strip $(if $1,$(firstword $1) \
        $(call uniq,$(filter-out $(firstword $1),$1))))
 
 PROJECTNAME = launcher
-SDKROOT= ../lpc_chip_11uxx_lib
-CM3LIB= ../../../cm3lib
+SDKROOT= ../../lpc_chip_11uxx_lib
+CM3LIB= ../../../../cm3lib
 
 OBJ_DIR = build
 EXE_DIR = exe
