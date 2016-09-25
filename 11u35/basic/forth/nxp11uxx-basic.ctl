@@ -39,7 +39,7 @@ include %CpuDir%/Macros
 \ Turn on the cross compiler and define CPU and log options
 \ *********************************************************
 
-\ file: zero.log                \ uncomment to send log to a file
+\ file: nxp11uxx.log                \ uncomment to send log to a file
 
 CROSS-COMPILE
 
@@ -177,7 +177,7 @@ cell equ cell				\ size of a cell (16 bits)
 
   \ include %LocalCM3%/bitband
   \ include %CpuDir%/MultiCortex		\ multi-tasker, MUST be before TIMEBASE
-  include %AppDir%/11Uxx		\ Various Addresses
+  include %AppDir%/nxp11Uxx		\ Various Addresses
 
 timebase? [if]
   include %CommonDir%/timebase		\ time base common code, MUST be before SysTickxxx
@@ -199,7 +199,7 @@ SIZEOFHEAP [if]
 \ *S End of kernel
 \ *************
 
-buildfile zero.no
+buildfile 11Uxx.no
 l: version$
   build$,
 l: BuildDate$
