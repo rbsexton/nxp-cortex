@@ -32,3 +32,8 @@
 *.dSYM/
 *.su
 .DS_Store
+*.map
+
+# Emacs leftovers.
+*~
+*#
