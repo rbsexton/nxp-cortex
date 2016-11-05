@@ -67,7 +67,7 @@ Stamp? 0= [if] +xrefs [then]	\ enable cross references
 \ *N 11Uxx Definitions.
 \ =====================
 
-#16 cells equ /ExcVecs	\ -- len
+#2 cells equ /ExcVecs	\ -- len
 \ *G Size of the exception/interrupt vector table. There are
 \ ** 16 reserved by ARM
 

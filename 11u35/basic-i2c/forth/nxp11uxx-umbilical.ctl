@@ -67,7 +67,7 @@ Stamp? 0= [if] +xrefs [then]	\ enable cross references
 \ *N 11Uxx Definitions.
 \ =====================
 
-#16 cells equ /ExcVecs	\ -- len
+#2 cells equ /ExcVecs	\ -- len
 \ *G Size of the exception/interrupt vector table. There are
 \ ** 16 reserved by ARM
 
@@ -173,7 +173,7 @@ cell equ cell				\ size of a cell (16 bits)
   include %CpuDir%/StackDef		\ Reserve default task and stacks
   PROGd  sec-top 1+ equ UNUSED-TOP  PROG	\ top of memory for UNUSED
 
-  include %CpuDir%/StartCM0             \ basic Cortex-M3 startup code
+  include %AppDir%/StartCM0             \ basic Cortex-M3 startup code
   include %CommonDir%/messages          \ Umbilical messages
   include %CpuDir%/minM0M1              \ main code defs.
   include %CommonDir%/UFkernel          \ Forth high level kernel
