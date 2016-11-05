@@ -1,7 +1,9 @@
 \ Access to the interconnect things.
 \ Its got to match the C side.
 
-$10000000 equ ICROOT
+udata
+create  ICROOT 4 allot
+cdata
 
 struct /INTER	\ -- size
 	int inter.ticks 

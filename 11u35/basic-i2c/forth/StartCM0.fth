@@ -1,5 +1,4 @@
 \ StartM0.fth - generic Cortex-M0 startup code
-
 ((
 Copyright (c) 2009, 2010, 2011
 MicroProcessor Engineering
@@ -68,11 +67,16 @@ init-s0 tos-cached? sp-guard + cells -
 \ The data stack pointer set at start up.
 
 internal
+
 : StartCortex	\ -- ; never exits
 \ *G Set up the Forth registers and start Forth. Other primary
 \ ** hardware initialisation can also be performed here.
   begin
     DI
+    [asm
+    ldr r1, ^icroot
+    str r0, [ r1, # 0 ] 
+    asm]
     \ INT_STACK_TOP SP_main sys!		\ set SP_main for interrupts
     INIT-R0 SP_process sys!		\ set SP_process for tasks
     2 control sys!			\ switch to SP_process
@@ -82,6 +86,11 @@ internal
     CLD1 @ execute
   again
 ;
+
+\ How do I make this clean?  The manifest constant sucks.
+align l: ^icroot
+      $10001200 ,
+
 external
 
 INT_STACK_TOP StackVec# SetExcVec	\ Define initial return stack

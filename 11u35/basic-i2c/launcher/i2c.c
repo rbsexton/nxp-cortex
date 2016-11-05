@@ -45,10 +45,8 @@ typedef struct {
 } tSharedData;
 
 
-tSharedData theshareddata
-	// This section is pinned to the
-	// beginning of SRAM.  The linker must KEEP it.
-	__attribute__ ((section(".shareddata"))) = 
+// The address of this is given to the app launcher.
+const tSharedData theshareddata = 
  	{ &tick_cnt };
 
 const uint32_t OscRateIn = 12000000; // Required by the build system.
@@ -169,6 +167,6 @@ int main(void) {
       int ret = Chip_UART_Send(LPC_USART, p,1);
       if ( ret ) p++;
     }
-    LaunchUserAppNoNVIC( (long unsigned int *) 0x2000);
+    LaunchUserAppNoNVIC( (long unsigned int *) 0x2000, &theshareddata);
 
 }
