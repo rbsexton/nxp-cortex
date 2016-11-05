@@ -56,17 +56,6 @@ target
 L: CLD1		\ holds xt of main word
   0 ,					\ fixed by MAKE-TURNKEY
 
-proc DefExc2	b  $	end-code	\ NMI
-proc DefExc3	b  $	end-code	\ HardFault
-proc DefExc4	b  $	end-code	\ MemManage
-proc DefExc5	b  $	end-code	\ BusFault
-proc DefExc6	b  $	end-code	\ UsageFault
-proc DefExc11	b  $	end-code	\ SVC
-proc DefExc12	b  $	end-code	\ DbgMon
-proc DefExc14	b  $	end-code	\ PendSV
-proc DefExc15	b  $	end-code	\ SysTick
-
-
 \ Calculate the initial value for the data stack pointer.
 \ We allow for TOS being in a register and guard space.
 
@@ -97,15 +86,7 @@ external
 
 INT_STACK_TOP StackVec# SetExcVec	\ Define initial return stack
 ' StartCortex ResetVec# SetExcVec	\ Define startup word
-DefExc2       2         SetExcVec
-DefExc3       3         SetExcVec
-DefExc4       4         SetExcVec
-DefExc5       5         SetExcVec
-DefExc11      11        SetExcVec
-DefExc12      12        SetExcVec
-DefExc14      14        SetExcVec
-DefExc15      15        SetExcVec
-
+\ Rest of vectors omitted.
 
 \ ------------------------------------------
 \ reset values for user and system variables
