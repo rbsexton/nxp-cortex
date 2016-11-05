@@ -140,6 +140,19 @@ void I2C_IRQHandler(void)
 
 const char greeting[] = "LPC11xx Boot!\r\n";
 
+// Lets inline this for simplicity's sake
+static void  LaunchUserAppNoNVIC(long unsigned int *base, long unsigned int *ic) {
+	    __asm(
+		"cpsid i\n"
+  	  	"ldr   r2, [ %[base] , #0 ] @ Load up the stack pointer..\n"
+		"mov sp, r2\n"
+		"ldr r2, [ %[base], #4 ]\n"
+        	"mov r0, %[ic] @ Put the RT Link in the right spot \n"
+		"cpsie i\n"
+		"bx  r2\n"
+         	: : [base] "r" (base), [ic] "r" (ic) : "r0", "r2" );
+	}
+
 /**
  * @brief	Main program body
  * @return	int
